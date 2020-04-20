@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "sidepanel-component-library": {
+      "components": [
+        {
+          "entrypoint": "./lib/libraries/sidepanelComponent/SidepanelComponentLibrary.js",
+          "manifest": "./src/libraries/sidepanelComponent/SidepanelComponentLibrary.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SidepanelComponentLibraryStrings": "lib/libraries/sidepanelComponent/loc/{locale}.js"
+  }
+}
