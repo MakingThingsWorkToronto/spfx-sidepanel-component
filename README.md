@@ -68,8 +68,10 @@ gulp
 
 ### Build options
 
+```bash
 gulp clean
 gulp test
 gulp serve
 gulp bundle
 gulp package-solution
+```
