@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { BaseWebComponent } from '../../models/BaseWebComponent';
 import { Panel, PanelType, Link } from "office-ui-fabric-react";
 import styles from './SidePanelComponent.module.scss';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export interface ISidePanelComponentProps {
 
@@ -25,6 +26,11 @@ export interface ISidePanelComponentProps {
      * The position of the panel
      */
     position?:string;
+
+    /**
+     * Determines if we should show open link in new window option
+     */
+    newwindow?:boolean;
 
 }
 
@@ -49,8 +55,12 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
     public render() {
 
         const panelTypeSize = this.getPanelTypeSize();
+        const openInNewWindow = this.props.newwindow === true
+                        ? <a href={this.props.viewformurl} className={styles.openInNewWindow} target="_blank" data-interception="off"><Icon iconName='OpenInNewTab' /></a> 
+                        : null;
 
         return <div className={styles.sidePanelLink}>
+            {openInNewWindow}
             <span onClick={(e) => {
                 this.setState({ showPanel: true });
             }}>{this.props.title}</span>
