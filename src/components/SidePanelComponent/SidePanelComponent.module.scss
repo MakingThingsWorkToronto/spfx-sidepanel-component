@@ -13,8 +13,10 @@
 }
 .sidePanelLink {
     vertical-align: middle;
+    > a,
     > span { font-size: 16px; font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif; 
         text-decoration: underline; cursor:pointer; color: "[theme: Hyperlink, default: #b3030c]"; vertical-align: middle; display: inline-block; }
+    > a:hover,
     > span:hover { color: "[theme: HyperlinkActive, default: #770208]"; }
     > a.openInNewWindow { margin-right: 0.5rem; color: "[theme: Hyperlink, default: #b3030c]"; vertical-align: middle; }
     > a.openInNewWindow:hover { color: "[theme: HyperlinkActive, default: #770208]"; }

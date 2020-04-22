@@ -53,7 +53,10 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
     }
 
     public render() {
-
+        const currentDomain = window.location.protocol + "//" + window.location.host;
+        const sameDomain = this.props.viewformurl && this.props.viewformurl.length > 0 
+                                ? this.props.viewformurl.indexOf(currentDomain) == 0
+                                : false;
         const panelTypeSize = this.getPanelTypeSize();
         const openInNewWindow = this.props.newwindow === true
                         ? <a href={this.props.viewformurl} className={styles.openInNewWindow} target="_blank" data-interception="off"><Icon iconName='OpenInNewTab' /></a> 
@@ -61,9 +64,10 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
 
         return <div className={styles.sidePanelLink}>
             {openInNewWindow}
-            <span onClick={(e) => {
-                this.setState({ showPanel: true });
-            }}>{this.props.title}</span>
+            {sameDomain ? <span onClick={(e) => {
+                    this.setState({ showPanel: true });
+                }}>{this.props.title}</span>
+                : <a href={this.props.viewformurl} target="_blank" data-interception="off">{this.props.title}</a>}
             
             <Panel
                 headerText={this.props.title}
@@ -90,7 +94,7 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
         let panelType : PanelType = null;
         let size: string = null;
 
-        switch (this.props.size) {
+        switch (this.props.position) {
             case "custom": {
                 panelType = PanelType.custom;
                 size = this.props.size;
